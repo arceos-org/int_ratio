@@ -96,7 +96,7 @@ impl Ratio {
     /// let zero = Ratio::zero();
     /// assert_eq!(zero.inverse(), Ratio::zero());
     /// ```
-    pub const fn inverse(&self) -> Self {
+    pub const fn inverse(self) -> Self {
         Self::new(self.denominator, self.numerator)
     }
 
@@ -111,7 +111,7 @@ impl Ratio {
     /// assert_eq!(ratio.mul_trunc(99), 66);  // 99 * 2 / 3 = 66
     /// assert_eq!(ratio.mul_trunc(100), 66); // trunc(100 * 2 / 3) = trunc(66.66...) = 66
     /// ```
-    pub const fn mul_trunc(&self, value: u64) -> u64 {
+    pub const fn mul_trunc(self, value: u64) -> u64 {
         ((value as u128 * self.mult as u128) >> self.shift) as u64
     }
 
@@ -127,7 +127,7 @@ impl Ratio {
     /// assert_eq!(ratio.mul_round(99), 66);  // 99 * 2 / 3 = 66
     /// assert_eq!(ratio.mul_round(100), 67); // round(100 * 2 / 3) = round(66.66...) = 67
     /// ```
-    pub const fn mul_round(&self, value: u64) -> u64 {
+    pub const fn mul_round(self, value: u64) -> u64 {
         ((value as u128 * self.mult as u128 + (1 << self.shift >> 1)) >> self.shift) as u64
     }
 }

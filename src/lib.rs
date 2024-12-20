@@ -20,16 +20,16 @@ pub struct Ratio {
 
 impl Ratio {
     /// The zero ratio.
-    /// 
+    ///
     /// It is a ratio of `0/0``, and behaves like a zero value in calculation. It
     /// differs from other `0/x` ratios in that it does not panic when getting
     /// the inverse ratio. Instead, it returns another zero ratio.
-    /// 
+    ///
     /// # Examples
-    /// 
+    ///
     /// ```
     /// use int_ratio::Ratio;
-    /// 
+    ///
     /// let zero = Ratio::zero();
     /// assert_eq!(zero.mul_trunc(123), 0);
     /// assert_eq!(zero.inverse(), Ratio::zero());
@@ -44,9 +44,9 @@ impl Ratio {
     }
 
     /// Creates a new ratio `numerator / denominator`.
-    /// 
+    ///
     /// # Panics
-    /// 
+    ///
     /// Panics if `denominator` is zero and `numerator` is not zero.
     pub const fn new(numerator: u32, denominator: u32) -> Self {
         assert!(!(denominator == 0 && numerator != 0));
@@ -92,7 +92,7 @@ impl Ratio {
     ///
     /// let ratio = Ratio::new(1, 2);
     /// assert_eq!(ratio.inverse(), Ratio::new(2, 1));
-    /// 
+    ///
     /// let zero = Ratio::zero();
     /// assert_eq!(zero.inverse(), Ratio::zero());
     /// ```

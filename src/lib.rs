@@ -5,11 +5,11 @@ use core::{cmp::PartialEq, fmt};
 
 /// The ratio type.
 ///
-/// It converts numerator / denominator to mult / (1 << shift) to avoid
-/// u128 division on calculation. The shift is  as large as possible to
+/// It converts `numerator / denominator` to `mult / (1 << shift)` to avoid
+/// `u128` division on calculation. The `shift` is  as large as possible to
 /// improve precision.
 ///
-/// Currently, it only supports u32 as the numerator and denominator.
+/// Currently, it only supports `u32` as the numerator and denominator.
 #[derive(Clone, Copy)]
 pub struct Ratio {
     numerator: u32,
@@ -21,8 +21,8 @@ pub struct Ratio {
 impl Ratio {
     /// The zero ratio.
     ///
-    /// It is a ratio of 0/0, and behaves like a zero value in calculation. It
-    /// differs from other 0/x ratios in that it does not panic when getting
+    /// It is a ratio of `0/0``, and behaves like a zero value in calculation. It
+    /// differs from other `0/x` ratios in that it does not panic when getting
     /// the inverse ratio. Instead, it returns another zero ratio.
     ///
     /// # Examples
@@ -46,11 +46,11 @@ impl Ratio {
         }
     }
 
-    /// Creates a new ratio numerator / denominator.
+    /// Creates a new ratio `numerator / denominator`.
     ///
     /// # Panics
     ///
-    /// Panics if denominator is zero and numerator is not zero.
+    /// Panics if `denominator` is zero and `numerator` is not zero.
     pub const fn new(numerator: u32, denominator: u32) -> Self {
         assert!(!(denominator == 0 && numerator != 0));
         if numerator == 0 {
@@ -97,7 +97,7 @@ impl Ratio {
     /// let ratio = Ratio::new(1, 2);
     /// assert_eq!(ratio.inverse(), Ratio::new(2, 1));
     ///
-    /// // `Ratio::zero()` is a special case representing 0/0. Its inverse is defined
+    /// // `Ratio::zero()` is a special case representing `0/0` . Its inverse is defined
     /// // as itself and does not panic, unlike a regular `0/x` ratio.
     /// let zero = Ratio::zero();
     /// assert_eq!(zero.inverse(), Ratio::zero());

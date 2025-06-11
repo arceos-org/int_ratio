@@ -32,9 +32,11 @@ impl Ratio {
     ///
     /// let zero = Ratio::zero();
     /// assert_eq!(zero.mul_trunc(123), 0);
+
     ///
     /// // As a special case, the inverse of Ratio::zero() (0/0) is itself
     /// // and does not panic.
+
     /// assert_eq!(zero.inverse(), Ratio::zero());
     /// ```
     pub const fn zero() -> Self {
@@ -96,9 +98,10 @@ impl Ratio {
     /// // The inverse of a standard ratio.
     /// let ratio = Ratio::new(1, 2);
     /// assert_eq!(ratio.inverse(), Ratio::new(2, 1));
-    ///
+
     /// // `Ratio::zero()` is a special case representing 0/0. Its inverse is defined
     /// // as itself and does not panic, unlike a regular `0/x` ratio.
+
     /// let zero = Ratio::zero();
     /// assert_eq!(zero.inverse(), Ratio::zero());
     /// ```
